@@ -32,7 +32,7 @@
 #include "streaming_extractortonal.h"
 #include "streaming_extractorpanning.h"
 #include "streaming_extractorpostprocess.h"
-#include "credit_libav.h" 
+#include "../credit_libav.h" 
 
 using namespace std;
 using namespace essentia;

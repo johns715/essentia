@@ -21,6 +21,7 @@
 #include <essentia/algorithmfactory.h>
 #include <essentia/essentiamath.h> // for the isSilent function
 #include <essentia/pool.h>
+//#include "algorithms/io/monoloader.h"
 
 using namespace std;
 using namespace essentia;
@@ -60,7 +61,6 @@ int main(int argc, char* argv[]) {
                                           "filename", argv[1],
                                           "sampleRate", sr,
                                           "downmix", "mix");
-
     vector<Real> audio;
     audioload->output("audio").set(audio);
     audioload->compute();
@@ -136,6 +136,7 @@ int main(int argc, char* argv[]) {
             
             // write to csv file
             ofstream outfile(argv[2]);
+            cout << "Writing output to file: " << argv[2] << endl;
             cout << "time   pitch [Hz]  pitch confidence" << endl;
             for (int i=0; i<(int)time.size(); i++){
                 outfile << time[i] << ", " << allPitches[i] << ", " << allConf[i] << endl;

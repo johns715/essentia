@@ -23,7 +23,7 @@
 #include "streamingalgorithmcomposite.h"
 #include "pool.h"
 #include "algorithm.h"
-#include "network.h"
+#include "scheduler/network.h"
 
 namespace essentia {
 namespace streaming {

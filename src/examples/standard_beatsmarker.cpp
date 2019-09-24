@@ -17,8 +17,11 @@
  * version 3 along with this program.  If not, see http://www.gnu.org/licenses/
  */
 
+#include "pch.h"
 #include <iostream>
 #include <fstream>
+//#include <libswresample/swresample.h>
+//#include <libavcodec/avcodec.h>
 #include <essentia/algorithmfactory.h>
 #include <essentia/pool.h>
 #include "credit_libav.h"
@@ -28,6 +31,7 @@ using namespace standard;
 
 int main(int argc, char* argv[]) {
 
+#if 1
   if (argc != 3) {
     cout << "Error: incorrect number of arguments." << endl;
     cout << "Usage: " << argv[0] << " audio_input output_file" << endl;
@@ -37,6 +41,10 @@ int main(int argc, char* argv[]) {
 
   string audioFilename = argv[1];
   string outputFilename = argv[2];
+#else
+    string audioFilename = "H:/SpeechData/_music/01 Sweet Home Alabama.mp3";
+    string outputFilename = "H:/SpeechData/_music/Sweet Home Alabama BEATS.mp3";
+#endif
 
   // register the algorithms in the factory(ies)
   essentia::init();
@@ -53,7 +61,7 @@ int main(int argc, char* argv[]) {
                                           "sampleRate", sampleRate);
 
   Algorithm* beatTracker = factory.create("BeatTrackerMultiFeature");
-
+  Algorithm* superFlux   = factory.create("SuperFluxExtractor");
 
   vector<Real> audio;
   vector<Real> beats;
@@ -67,16 +75,20 @@ int main(int argc, char* argv[]) {
   beatTracker->output("confidence").set(confidence);
   beatTracker->compute();
 
+  superFlux->input("signal").set(audio);
+  superFlux->output("onsets").set(beats);
+  superFlux->compute();
+
 
   vector<Real> audioOutput;
-
-  Algorithm* beatsMarker = factory.create("AudioOnsetsMarker",
-                                          "onsets", beats,
-                                          "type", "beep");
 
   Algorithm* audioWriter = factory.create("MonoWriter",
                                           "filename", outputFilename,
                                           "sampleRate", sampleRate);
+
+  Algorithm* beatsMarker = factory.create("AudioOnsetsMarker",
+                                          "onsets", beats,
+                                          "type", "beep");
 
   beatsMarker->input("signal").set(audio);
   beatsMarker->output("signal").set(audioOutput);
@@ -84,6 +96,8 @@ int main(int argc, char* argv[]) {
   audioWriter->input("audio").set(audioOutput);
 
   beatsMarker->compute();
+
+
   audioWriter->compute();
 
   delete audioLoader;
