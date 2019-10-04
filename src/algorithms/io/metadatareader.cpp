@@ -21,9 +21,10 @@
 #include <windows.h>
 #endif
 
-#include <fileref.h>
-#include <tpropertymap.h>
-#include <tag.h>
+// Taglib...
+#include <taglib/fileref.h>
+#include <taglib/tpropertymap.h>
+#include <taglib/tag.h>
 
 #include <algorithm>
 

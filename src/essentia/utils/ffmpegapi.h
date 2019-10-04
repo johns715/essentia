@@ -24,7 +24,7 @@ extern "C" {
 #include <libavcodec/avcodec.h>
 #include <libavformat/avformat.h>
 #include <libavutil/md5.h>
-//#include<libavresample/avresample.h>
+//#include <libavresample/avresample.h>
 #include<libswresample/swresample.h>
 #include<libavutil/opt.h>
 }

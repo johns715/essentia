@@ -147,7 +147,8 @@ int AudioContext::create(const std::string& filename,
   // Configure sample format convertion
   E_DEBUG(EAlgorithm, "AudioContext: using sample format conversion from libswresample");
   _convertCtxAv = swr_alloc(); 
-        
+  //_convertCtxAv = avresample_alloc_context();
+
   av_opt_set_int(_convertCtxAv, "in_channel_layout", _codecCtx->channel_layout, 0);
   av_opt_set_int(_convertCtxAv, "out_channel_layout", _codecCtx->channel_layout, 0);
   av_opt_set_int(_convertCtxAv, "in_sample_rate", _codecCtx->sample_rate, 0);

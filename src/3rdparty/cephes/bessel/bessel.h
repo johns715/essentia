@@ -36,7 +36,7 @@ double iv(double v, double x);
 // double kn(int n, double x);
 
 // double gam(double x);
-double gamma(double x);
+//double gamma(double x);
 double lgam(double x);
 // extern int sgngam;
 
