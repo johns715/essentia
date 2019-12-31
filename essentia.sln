@@ -1,0 +1,25 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio 15
+VisualStudioVersion = 15.0.28010.2036
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "essentia", "essentia.vcxproj", "{02791F57-A813-4065-A3B5-1CB8D4A0573A}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|x86 = Debug|x86
+		Release|x86 = Release|x86
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{02791F57-A813-4065-A3B5-1CB8D4A0573A}.Debug|x86.ActiveCfg = Debug|Win32
+		{02791F57-A813-4065-A3B5-1CB8D4A0573A}.Debug|x86.Build.0 = Debug|Win32
+		{02791F57-A813-4065-A3B5-1CB8D4A0573A}.Release|x86.ActiveCfg = Release|Win32
+		{02791F57-A813-4065-A3B5-1CB8D4A0573A}.Release|x86.Build.0 = Release|Win32
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {A90A4434-774B-48A4-8767-4E8FD0A7E653}
+	EndGlobalSection
+EndGlobal
